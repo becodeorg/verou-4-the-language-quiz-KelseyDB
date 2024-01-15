@@ -14,7 +14,10 @@
 	<main>
 		<!-- Put a random word from list here for the user to translate below -->
 		<!-- <p>word to translate</p> -->
+	<?php echo $_SESSION['word']->frenchTranslation ?>
 		<form action= "" method="POST" id="wordForm">
+			<label for="answer">Your answer:</label>
+			<br>
 			<input class="answer" id="answer" type="text" name="answer">
 			<br>
 			<input type="submit" value="Check">

@@ -3,7 +3,14 @@
 class Word
 {
     // TODO: add word (FR) and answer (EN) - (via constructor or not? why?)
+    public $frenchTranslation;
+    public $englishTranslation;
 
+    public function __construct($frenchTranslation, $englishTranslation){
+      $this->frenchTranslation = $frenchTranslation;
+      $this->englishTranslation = $englishTranslation;
+    }
+    
     public function verify(string $answer): bool
     {
         // TODO: use this function to verify if the provided answer by the user matches the correct one

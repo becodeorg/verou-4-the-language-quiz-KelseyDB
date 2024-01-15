@@ -6,16 +6,28 @@ class LanguageGame
 
     public function __construct()
     {
+      $this->words = [];
         // :: is used for static functions
         // They can be called without an instance of that class being created
         // and are used mostly for more *static* types of data (a fixed set of translations in this case)
         foreach (Data::words() as $frenchTranslation => $englishTranslation) {
             // TODO: create instances of the Word class to be added to the words array
+            $this->words[] = new Word($frenchTranslation, $englishTranslation);
         }
+    }
+    public function randomWord(){
+      $randomKey = array_rand($this->words, 1);
+      $randomWord = $this->words[$randomKey];
+      return $randomWord;
     }
 
     public function run(): void
     {
+      session_start();
+      if ($_SERVER['REQUEST_METHOD'] !== "POST"){
+        $_SESSION['word']= $this->randomWord();
+        print_r ($_SESSION['word']);
+      }
         // TODO: check for option A or B
 
         // Option A: user visits site first time (or wants a new word)
